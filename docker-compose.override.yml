@@ -1,0 +1,24 @@
+services:
+  borrowing-api:
+    image: mcr.microsoft.com/dotnet/sdk:8.0  # ✅ Use SDK for dev container
+    working_dir: /app
+    volumes:
+      - ./BorrowingSystem.WebApi:/app
+      - ~/.nuget/packages:/root/.nuget/packages
+      - ~/.dotnet/tools:/root/.dotnet/tools
+      - /app/bin
+      - /app/obj
+    command: >
+      sh -c "dotnet watch run --urls http://0.0.0.0:8080"
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    env_file:
+      - .env.local
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - borrowing-net
+
+networks:
+  borrowing-net:
