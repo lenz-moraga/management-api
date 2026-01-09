@@ -80,16 +80,17 @@ This project follows **Clean Architecture** principles to ensure:
 
 2. **Configure environment variables**
    ```bash
-   cp appsettings.Example.json appsettings.Development.json
-   # Edit appsettings.Development.json with your database connection string
+   # Create your appsettings.Development.json with database connection string
+   # Or set environment variables for database configuration
    ```
 
-3. **Run with Docker Compose**
+3. **Run with Docker Compose** (if using Docker)
    ```bash
    docker-compose up -d
+   # Wait for PostgreSQL container to be ready
    ```
 
-4. **Apply database migrations**
+4. **Apply database migrations** (after database is ready)
    ```bash
    dotnet ef database update
    ```
