@@ -79,9 +79,19 @@ This project follows **Clean Architecture** principles to ensure:
    ```
 
 2. **Configure environment variables**
+   
+   Create an `appsettings.Development.json` file with your database connection:
+   ```json
+   {
+     "ConnectionStrings": {
+       "DefaultConnection": "Host=localhost;Database=managementdb;Username=postgres;Password=yourpassword"
+     }
+   }
+   ```
+   
+   Or use environment variables:
    ```bash
-   # Create your appsettings.Development.json with database connection string
-   # Or set environment variables for database configuration
+   export ConnectionStrings__DefaultConnection="Host=localhost;Database=managementdb;Username=postgres;Password=yourpassword"
    ```
 
 3. **Run with Docker Compose** (if using Docker)
@@ -159,6 +169,8 @@ Swagger UI provides:
 - Authentication testing
 
 ### Example API Calls
+
+> **Note**: The following examples demonstrate typical CRUD operations. Actual endpoints will vary based on your implementation.
 
 **Get all items**
 ```bash
